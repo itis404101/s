@@ -393,6 +393,9 @@ class FireworksAnimation {
             widthSlider.value = this.canvasWidth;
             heightSlider.value = this.canvasHeight;
             this.resizeCanvas();
+            // Clear all existing shapes and reset to 100
+            this.circles = [];
+            this.createCircles(100);
             this.updateSizeDisplay();
         });
     }
