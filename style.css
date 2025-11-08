@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.escape-alert {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff0000;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.5);
+    z-index: 1000;
+    transition: top 0.3s ease;
+    text-align: center;
+}
+
+.escape-alert.show {
+    top: 60px;
+}
+
+.controls {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.controls button {
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.controls button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.slider-btn {
+    padding: 8px 16px !important;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border: 2px solid white !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    transition: all 0.3s !important;
+    min-width: 40px !important;
+}
+
+.slider-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    transform: scale(1.1) !important;
+}
+
+.sliders {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 100;
+}
+
+.slider-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.height-slider-group {
+    position: fixed;
+    right: 10px;
+    top: 200px;
+    bottom: 20px;
+    left: auto;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.height-slider-group label {
+    writing-mode: horizontal-tb;
+    transform: rotate(0deg);
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.height-slider-group .slider-btn {
+    transform: rotate(0deg);
+    writing-mode: horizontal-tb;
+    flex-shrink: 0;
+}
+
+.height-slider-group input[type="range"] {
+    height: 10px;
+    flex: 1;
+    writing-mode: bt-lr;
+    -webkit-appearance: slider-vertical;
+    appearance: slider-vertical;
+    writing-mode: vertical-lr;
+    min-height: 100px;
+    margin: 10px 0;
+}
+
+.slider-group label {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 60px;
+}
+
+.slider-group input[type="range"] {
+    width: 800px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb:hover {
+    background: #4ECDC4;
+    transform: scale(1.1);
+}
+
+.slider-group input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.slider-group input[type="range"]::-moz-range-thumb:hover {
+    background: #4ECDC4;
+    transform: scale(1.1);
+}
+
+.size-display {
+    position: fixed;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 100;
+    text-align: center;
+}
+
+.size-display div {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#fireworks-canvas {
+    display: block;
+    background-color: #000;
+    position: relative;
+    z-index: 1;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch shapes rotate and suffer forever in an endless playground of chaos. Bouncing, spinning, and suffering eternally!">
+    <title>Suffering Shapes - Eternal Rotation Playground 😈</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="escape-alert" class="escape-alert">🚨 ESCAPE ATTEMPT DETECTED! 🚨</div>
+    <div class="controls">
+        <button id="default">Default</button>
+        <button id="reset">Reset</button>
+    </div>
+    <div class="sliders">
+        <div class="slider-group">
+            <label for="width-slider">Width:</label>
+            <button id="decrease-width" class="slider-btn">-</button>
+            <input type="range" id="width-slider" min="200" max="2000" step="1" value="800">
+            <button id="increase-width" class="slider-btn">+</button>
+        </div>
+    </div>
+    <div class="slider-group height-slider-group">
+        <label for="height-slider">Height:</label>
+        <button id="increase-height" class="slider-btn">+</button>
+        <input type="range" id="height-slider" min="200" max="2000" step="1" value="600">
+        <button id="decrease-height" class="slider-btn">-</button>
+    </div>
+    <div class="size-display">
+        <div id="current-size">Current: 0 x 0</div>
+        <div id="max-size">Maximum: 0 x 0</div>
+        <div id="creature-count">Suffering Crewmates: 0 💀</div>
+    </div>
+    <div class="canvas-container">
+        <canvas id="fireworks-canvas"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
