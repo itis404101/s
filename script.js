@@ -270,12 +270,51 @@ class FireworksAnimation {
             this.updateHeightSliderLength();
         });
         
-        // Click to spawn shapes
-        this.playground.addEventListener('click', (e) => {
+        // Track shift key and spawn interval
+        let isShiftPressed = false;
+        let spawnInterval = null;
+        
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Shift') {
+                isShiftPressed = true;
+            }
+        });
+        
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'Shift') {
+                isShiftPressed = false;
+            }
+        });
+        
+        // Click to spawn shapes (single click or hold with shift)
+        this.playground.addEventListener('mousedown', (e) => {
             const rect = this.playground.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
+            
+            // Spawn one immediately
             this.spawnShapeAt(x, y);
+            
+            // If shift is pressed, start continuous spawning
+            if (isShiftPressed) {
+                spawnInterval = setInterval(() => {
+                    this.spawnShapeAt(x, y);
+                }, 100); // Spawn every 100ms
+            }
+        });
+        
+        this.playground.addEventListener('mouseup', () => {
+            if (spawnInterval) {
+                clearInterval(spawnInterval);
+                spawnInterval = null;
+            }
+        });
+        
+        this.playground.addEventListener('mouseleave', () => {
+            if (spawnInterval) {
+                clearInterval(spawnInterval);
+                spawnInterval = null;
+            }
         });
         
         // Start animation
