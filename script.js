@@ -248,6 +248,10 @@ class FireworksAnimation {
         this.escapeAlert = document.getElementById('escape-alert');
         this.alertTimeout = null;
         this.speeds = [];
+        
+        // Suffering score tracking
+        this.sufferingScore = 0;
+        
         // Create 10 circles with random properties
         this.createCircles(10);
         
@@ -422,6 +426,7 @@ class FireworksAnimation {
             // Clear all existing shapes and speeds, then reset to 10
             this.circles = [];
             this.speeds = [];
+            this.sufferingScore = 0; // Reset suffering score
             this.createCircles(10);
             this.updateSizeDisplay();
         });
@@ -434,6 +439,8 @@ class FireworksAnimation {
             `Maximum: ${window.innerWidth} x ${window.innerHeight} | Default: ${this.defaultWidth} x ${this.defaultHeight}`;
         document.getElementById('creature-count').textContent = 
             `Suffering Crewmates: ${this.circles.length} 💀`;
+        document.getElementById('suffering-score').textContent = 
+            `Total Suffering: ${this.sufferingScore.toLocaleString()} 🔥`;
     }
     
     resizeCanvas() {
@@ -576,6 +583,9 @@ class FireworksAnimation {
                     speed1.speedY += impulse * ny;
                     speed2.speedX -= impulse * nx;
                     speed2.speedY -= impulse * ny;
+                    
+                    // Increment suffering score for collision!
+                    this.sufferingScore++;
                 }
             }
         }
@@ -607,6 +617,8 @@ class FireworksAnimation {
             if (result.escaped) {
                 console.log(`🚨 ESCAPE ATTEMPT! Shape #${index + 1} tried to escape but was caught!`);
                 this.showEscapeAlert();
+                // Increment suffering score for wall bounce!
+                this.sufferingScore++;
             }
             
             // Update stored speed
@@ -615,6 +627,11 @@ class FireworksAnimation {
             // Draw circle
             circle.draw(this.ctx);
         });
+        
+        // Update display (throttled to avoid performance impact)
+        if (Math.random() < 0.1) { // Update ~10% of frames
+            this.updateSizeDisplay();
+        }
         
         requestAnimationFrame(() => this.animate());
     }
